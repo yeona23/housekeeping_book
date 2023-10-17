@@ -1,67 +1,32 @@
-# Getting Started with Create React App
+# 요구사항
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. create-react-app 으로 프로젝트를 세팅합니다.
+2. 다음과 같은 항목들을 form input을 통해 입력을 받습니다.
+    - 이름 : string
+    - 가격 : number
+    - 유형 : string
+    - 구입 날짜 : date
+    - 메모 : string
+        - 체크박스로 체크가 된 경우만 메모 input을 보여주고 값을 받습니다.
+    - 재구매 의사 : boolean
+        - 라디오 버튼을 통해 구현
+3. 입력받은 소비 항목들은 최신 순서대로 리스트로 보여집니다.
+4. 유형별 필터를 통해 유형에 맞춰 필터링된 리스트를 볼 수 있습니다.
+5. 정렬 기준을 다음과 같이 가지고 정렬해 줄 수 있습니다.
+    1. 가격 높은 순
+    2. 가격 낮은 순
+    3. 최신 순
+    4. 오래된 순
+6. 기간을 정해서 해당 기간에 소비한 내역만 볼 수 있습니다.
 
-## Available Scripts
+# 주의사항
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
+1. HTML과 CSS는 와이어프레임을 참고해서 레이아웃이 구분될 정도로만 만들어 주시면 됩니다. 너무 디자인에 집착하지 않아도 됩니다.
+2. css 클래스명은 BEM 방식을 따르기를 권장합니다.
+3. 주어진 프로젝트 설명을 명확하게 이해하고 해당 요구사항대로 정확하게 구현을 하는 것에 집중합니다.
+4. state, props, event handler를 적절하게 목적에 맞게 사용합니다.
+5. 하나의 컴포넌트는 하나의 역할을 하는 방향으로 만들어 봅니다.
+6. 변수명, 함수명을 명시적으로 바로 잘 이해할 수 있게 작성해 봅니다.
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
