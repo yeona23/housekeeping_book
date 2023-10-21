@@ -1,0 +1,33 @@
+.ItemList {
+  border: 2px solid #434343;
+  padding: 20px;
+  width: 60vw;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.FormAccount input {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #43434350;
+}
+
+.FormAccount input:focus {
+  outline: none;
+  border: 1px solid salmon;
+}
+
+.FormAccount select {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #43434350;
+}
+
+.FormAccount select:focus {
+  outline: none;
+  border: 1px solid salmon;
+}

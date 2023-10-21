@@ -1,7 +1,14 @@
-import "./App.css";
+import React from "react";
+import FormAccount from "./components/FormAccount";
+import ItemList from "./components/ItemList";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <div className="Book">
+      <FormAccount />
+      <ItemList />
+    </div>
+  );
+};
 
 export default App;

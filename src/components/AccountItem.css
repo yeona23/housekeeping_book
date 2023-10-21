@@ -1,0 +1,21 @@
+.AccountItem {
+  border: none;
+  border-bottom: 1px solid #43434350;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.AccountItem .title_item {
+  flex: 1;
+}
+
+.AccountItem .btn_delete button {
+  cursor: pointer;
+  color: gray;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
