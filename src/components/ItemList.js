@@ -2,7 +2,11 @@
 import "./ItemList.css";
 import React from "react";
 
-const ItemList = ({ book }) => {
+const ItemList = ({ book, onDelete, id }) => {
+  const onClickDelete = (id) => {
+    onDelete(id);
+  };
+
   return (
     <>
       <div className="ItemList">
@@ -21,7 +25,9 @@ const ItemList = ({ book }) => {
               </div>
             </div>
             <div className="btn-delete">
-              <button>삭제하기</button>
+              <button onClick={() => onClickDelete(content.id)}>
+                삭제하기
+              </button>
             </div>
           </div>
         ))}

@@ -22,7 +22,7 @@ const App = () => {
       price: Number(data.price),
       purchaseType: data.purchaseType,
       date: new Date(data.date),
-      memoIs: data.memoIs, // Fixed typo in property name
+      memoIs: data.memoIs,
       repurchase: data.repurchase === "yes",
     };
 
@@ -30,7 +30,7 @@ const App = () => {
 
     idRef.current++;
 
-    // Clear the form fields
+    //폼 초기화
     data.title = "";
     data.price = 0;
     data.purchaseType = "";
@@ -39,10 +39,14 @@ const App = () => {
     data.repurchase = "no";
   };
 
+  const onDelete = (targetId) => {
+    setBook(book.filter((it) => it.id !== targetId));
+  };
+
   return (
     <div className="Book">
       <FormAccount onCreate={onCreate} />
-      <ItemList book={book} />
+      <ItemList book={book} onDelete={onDelete} />
     </div>
   );
 };
