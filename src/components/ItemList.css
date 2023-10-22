@@ -1,33 +1,40 @@
 .ItemList {
-  border: 2px solid #434343;
+  border-bottom: 1px solid #434343;
+  border-top: 1px solid #434343;
   padding: 20px;
   width: 60vw;
   height: auto;
   margin: 0 auto;
-  margin-top: 100px;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.FormAccount input {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #43434350;
+.AccountItem {
+  border: none;
+  border-bottom: 1px solid #43434350;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
-.FormAccount input:focus {
-  outline: none;
-  border: 1px solid salmon;
+.AccountItem .title_item {
+  flex: 1;
 }
 
-.FormAccount select {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid #43434350;
+.AccountItem .btn-delete {
+  margin-left: 20px;
 }
 
-.FormAccount select:focus {
-  outline: none;
-  border: 1px solid salmon;
+.AccountItem .btn-delete button {
+  cursor: pointer;
+  background: salmon;
+  color: white;
+  font-size: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
 }

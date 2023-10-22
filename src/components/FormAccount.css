@@ -1,5 +1,5 @@
 .FormAccount {
-  border: 2px solid #434343;
+  border: 1px solid #434343;
   padding: 20px;
   width: 60vw;
   height: auto;
@@ -11,6 +11,7 @@
 }
 .FormAccount > div {
   display: flex;
+  align-items: center;
 }
 
 .FormAccount input {
@@ -40,4 +41,30 @@
   width: 100px;
   text-align: right;
   margin-right: 30px;
+}
+
+.FormAccount .repurchase_form span {
+  width: 100px;
+  text-align: right;
+  margin-right: 30px;
+}
+
+.FormAccount .repurchase_form label {
+  width: auto;
+  font-size: 13px;
+  line-height: 11px;
+}
+
+.FormAccount .btn-submit {
+  justify-content: center;
+}
+
+.FormAccount .btn-submit button {
+  cursor: pointer;
+  background: salmon;
+  color: white;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
