@@ -14,6 +14,9 @@ const initialState = {
 const FormAccount = ({ onCreate }) => {
   const [content, setContent] = useState(initialState);
   const [isMemoEnabled, setIsMemoEnabled] = useState(false);
+  const memoCheckHandler = (e) => {
+    setIsMemoEnabled(e.target.checked);
+  };
   //메모기능의 활성화
 
   const handleInputChange = (e) => {
@@ -92,7 +95,7 @@ const FormAccount = ({ onCreate }) => {
           name="memoCheck"
           type="checkbox"
           checked={isMemoEnabled}
-          onChange={handleInputChange}
+          onChange={memoCheckHandler}
         />
         {isMemoEnabled && (
           <input
