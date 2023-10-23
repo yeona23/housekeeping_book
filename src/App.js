@@ -7,11 +7,11 @@ const App = () => {
   const [book, setBook] = useState([
     {
       id: "0",
-      title: "wet tissue",
-      price: 30000,
-      purchaseType: "daily",
+      title: "BEER",
+      price: 15000,
+      purchaseType: "food",
       date: new Date(2023, 10, 14),
-      memoIs: "good",
+      memoIs: "good!!!",
       repurchase: true,
     },
   ]);
@@ -32,11 +32,11 @@ const App = () => {
 
     //폼 초기화
     data.title = "";
-    data.price = 0;
+    data.price = "";
     data.purchaseType = "";
     data.date = new Date().toISOString().split("T")[0];
     data.memoIs = "";
-    data.repurchase = "no";
+    data.repurchase = "yes";
   };
 
   const onDelete = (targetId) => {

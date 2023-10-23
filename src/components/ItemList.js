@@ -2,7 +2,7 @@
 import "./ItemList.css";
 import React from "react";
 
-const ItemList = ({ book, onDelete, id }) => {
+const ItemList = ({ book, onDelete }) => {
   const onClickDelete = (id) => {
     onDelete(id);
   };

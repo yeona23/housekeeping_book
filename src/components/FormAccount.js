@@ -4,15 +4,18 @@ import React, { useRef, useState } from "react";
 
 const initialState = {
   title: "",
-  price: 0,
+  price: "",
   purchaseType: "",
   date: new Date().toISOString().split("T")[0],
   memoIs: "",
-  repurchase: "no",
+  repurchase: "yes",
 };
 
 const FormAccount = ({ onCreate }) => {
   const [content, setContent] = useState(initialState);
+  const titleInputRef = useRef();
+  const priceInputRef = useRef();
+  const inputRef = useRef();
   const [isMemoEnabled, setIsMemoEnabled] = useState(false);
   const memoCheckHandler = (e) => {
     setIsMemoEnabled(e.target.checked);
@@ -30,25 +33,39 @@ const FormAccount = ({ onCreate }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    //빈 문자열일 경우 반환
+    if (content.title.trim() === "") {
+      titleInputRef.current.focus();
+      return;
+    } else if (content.price.toString().trim() === "") {
+      priceInputRef.current.focus();
+    }
     onCreate(content);
     setContent(initialState);
   };
   // enter key로 submit보내기
   const onKeyDown = (e) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === "Enter") {
       e.preventDefault();
       onSubmit();
     }
   };
 
   return (
-    <form className="FormAccount" onSubmit={onSubmit} onKeyDown={onKeyDown}>
+    <form
+      className="FormAccount"
+      ref={inputRef}
+      onSubmit={onSubmit}
+      onKeyDown={onKeyDown}
+    >
       <div className="title_form">
         <label htmlFor="name">이름</label>
         <input
           id="name"
           name="title"
           value={content.title}
+          ref={titleInputRef}
           onChange={handleInputChange}
         />
       </div>
@@ -57,6 +74,7 @@ const FormAccount = ({ onCreate }) => {
         <input
           id="price"
           name="price"
+          ref={priceInputRef}
           value={content.price}
           onChange={handleInputChange}
           type="number"
