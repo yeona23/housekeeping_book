@@ -4,8 +4,7 @@
   padding: 20px;
   width: 60vw;
   height: auto;
-  margin: 0 auto;
-  margin: 50px auto;
+  margin: 20px auto 50px auto;
   display: flex;
   flex-direction: column;
   gap: 15px;

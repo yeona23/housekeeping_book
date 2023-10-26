@@ -1,0 +1,12 @@
+.FilterAndSort {
+  border-bottom: 1px solid #434343;
+  border-top: 1px solid #434343;
+  padding: 20px;
+  width: 60vw;
+  height: auto;
+  margin: 0 auto;
+  margin: 20px auto;
+  display: flex;
+  /* flex-direction: column; */
+  gap: 15px;
+}

@@ -1,6 +1,5 @@
-import "./FormAccount.css";
-
 import React, { useRef, useState } from "react";
+import "./FormAccount.css";
 
 const initialState = {
   title: "",
@@ -11,16 +10,10 @@ const initialState = {
   repurchase: "yes",
 };
 
-const FormAccount = ({ onCreate }) => {
+const FormAccount = ({ onCreate, onKeyDown, applyFilters }) => {
   const [content, setContent] = useState(initialState);
   const titleInputRef = useRef();
   const priceInputRef = useRef();
-  const inputRef = useRef();
-  const [isMemoEnabled, setIsMemoEnabled] = useState(false);
-  const memoCheckHandler = (e) => {
-    setIsMemoEnabled(e.target.checked);
-  };
-  //메모기능의 활성화
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -31,53 +24,53 @@ const FormAccount = ({ onCreate }) => {
     }));
   };
 
+  const handleMemoCheck = (e) => {
+    setContent((prevState) => ({
+      ...prevState,
+      isMemoEnabled: e.target.checked,
+    }));
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
-    //빈 문자열일 경우 반환
     if (content.title.trim() === "") {
       titleInputRef.current.focus();
       return;
-    } else if (content.price.toString().trim() === "") {
+    }
+
+    if (content.price.trim() === "") {
       priceInputRef.current.focus();
+      return;
     }
+
     onCreate(content);
+    applyFilters();
     setContent(initialState);
-  };
-  // enter key로 submit보내기
-  const onKeyDown = (e) => {
-    if (e.keyCode === "Enter") {
-      e.preventDefault();
-      onSubmit();
-    }
   };
 
   return (
-    <form
-      className="FormAccount"
-      ref={inputRef}
-      onSubmit={onSubmit}
-      onKeyDown={onKeyDown}
-    >
+    <form className="FormAccount" onSubmit={onSubmit}>
       <div className="title_form">
-        <label htmlFor="name">이름</label>
+        <label htmlFor="title">이름</label>
         <input
-          id="name"
+          type="text"
+          id="title"
           name="title"
           value={content.title}
-          ref={titleInputRef}
           onChange={handleInputChange}
+          ref={titleInputRef}
         />
       </div>
       <div className="price_form">
         <label htmlFor="price">가격</label>
         <input
+          type="number"
           id="price"
           name="price"
-          ref={priceInputRef}
           value={content.price}
           onChange={handleInputChange}
-          type="number"
+          ref={priceInputRef}
           step="100"
         />
       </div>
@@ -89,58 +82,58 @@ const FormAccount = ({ onCreate }) => {
           value={content.purchaseType}
           onChange={handleInputChange}
         >
-          <option>선택하세요</option>
-          <option value="daily">생활용품</option>
-          <option value="food">식비</option>
-          <option value="edu">교육비</option>
-          <option value="etc">기타</option>
+          <option value="">SELECT</option>
+          <option value="DAILY">DAILY</option>
+          <option value="FOOD">FOOD</option>
+          <option value="EDU">EDU</option>
+          <option value="ETC">ETC...</option>
         </select>
       </div>
       <div className="date_form">
         <label htmlFor="date">구입 날짜</label>
         <input
+          type="date"
           id="date"
           name="date"
           value={content.date}
-          type="date"
           onChange={handleInputChange}
         />
       </div>
       <div className="memo_form">
         <label htmlFor="memoCheck">메모</label>
         <input
-          id="memoCheck"
-          name="memoCheck"
           type="checkbox"
-          checked={isMemoEnabled}
-          onChange={memoCheckHandler}
+          id="memoCheck"
+          name="isMemoEnabled"
+          checked={content.isMemoEnabled}
+          onChange={handleMemoCheck}
         />
-        {isMemoEnabled && (
+        {content.isMemoEnabled && (
           <input
-            value={content.memoIs}
+            type="text"
             name="memoIs"
+            value={content.memoIs}
             onChange={handleInputChange}
-            placeholder=" "
           />
         )}
       </div>
       <div className="repurchase_form">
         <span>재구매 의사</span>
         <input
+          type="radio"
+          id="yes"
           name="repurchase"
           value="yes"
           checked={content.repurchase === "yes"}
-          type="radio"
-          id="yes"
           onChange={handleInputChange}
         />
         <label htmlFor="yes">한다</label>
         <input
+          type="radio"
+          id="no"
           name="repurchase"
           value="no"
           checked={content.repurchase === "no"}
-          type="radio"
-          id="no"
           onChange={handleInputChange}
         />
         <label htmlFor="no">안한다</label>
