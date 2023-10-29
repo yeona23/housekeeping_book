@@ -37,7 +37,6 @@ function App() {
   const idRef = useRef(3);
 
   const onSubmit = (data) => {
-    console.log("tr");
     const newBook = {
       id: idRef.current,
       ...data,
@@ -49,30 +48,48 @@ function App() {
     setBook((prevBook) => [newBook, ...prevBook]);
   };
 
-  const onKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-    }
-  };
-
-  const [selectedType, SetSelectedType] = useState("");
-
-  const handleTypeChange = (newType) => {
-    SetSelectedType(newType);
-  };
-
   const onDelete = (targetId) => {
     setBook((prevBook) => prevBook.filter((it) => it.id !== targetId));
   };
 
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedSortOption, setSelectedSortOption] = useState("");
+  const [selectedStartDate, setSelectedStartDate] = useState("");
+  const [selectedEndDate, setSelectedEndDate] = useState("");
+  const [dateFilteredItems, setDateFilteredItems] = useState([]);
+
+  const applyFilter = () => {
+    // 필터링을 수행
+    const startDate = new Date(selectedStartDate);
+    const endDate = new Date(selectedEndDate);
+    const filteredItems = book.filter((item) => {
+      const itemDate = item.date;
+      return (
+        (!startDate || itemDate >= startDate) &&
+        (!endDate || itemDate <= endDate)
+      );
+    });
+
+    // 필터링된 결과를 상태에 저장
+    setDateFilteredItems(filteredItems);
+  };
+
   return (
     <div className="Book">
-      <FormAccount onCreate={onSubmit} onKeyDown={onKeyDown} />
+      <FormAccount onCreate={onSubmit} />
       <FilterAndSort
-        onTypeChange={handleTypeChange}
-        selectedType={selectedType}
+        onTypeChange={setSelectedType}
+        onSortChange={setSelectedSortOption}
+        onApplyFilter={applyFilter}
       />
-      <ItemList book={book} selectedType={selectedType} onDelete={onDelete} />
+      <ItemList
+        book={dateFilteredItems.length > 0 ? dateFilteredItems : book}
+        selectedType={selectedType}
+        selectedSortOption={selectedSortOption}
+        onDelete={onDelete}
+        selectedStartDate={selectedStartDate}
+        selectedEndDate={selectedEndDate}
+      />
     </div>
   );
 }

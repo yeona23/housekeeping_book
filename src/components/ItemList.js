@@ -2,14 +2,32 @@
 import "./ItemList.css";
 import React from "react";
 
-const ItemList = ({ book, selectedType, onDelete }) => {
+const ItemList = ({
+  book,
+  selectedType,
+  selectedSortOption,
+  onDelete,
+  selectedStartDate,
+  selectedEndDate,
+}) => {
   const onClickDelete = (id) => {
     onDelete(id);
   };
 
-  const filteredItems = selectedType
-    ? book.filter((content) => content.purchaseType === selectedType)
+  const sortOptions = {
+    priceAsc: (a, b) => a.price - b.price,
+    priceDesc: (a, b) => b.price - a.price,
+    dateAsc: (a, b) => a.date - b.date,
+    dateDesc: (a, b) => b.date - a.date,
+  };
+
+  const sortedItems = selectedSortOption
+    ? [...book].sort(sortOptions[selectedSortOption])
     : book;
+
+  const filteredItems = selectedType
+    ? sortedItems.filter((content) => content.purchaseType === selectedType)
+    : sortedItems;
 
   return (
     <>

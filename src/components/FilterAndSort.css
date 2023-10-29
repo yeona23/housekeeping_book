@@ -1,0 +1,20 @@
+.FilterAndSort {
+  width: 60vw;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+select:focus {
+  outline: 1px solid salmon;
+}
+
+option:focus {
+  background: salmon;
+  color: #fff;
+}
+
+.FilterAndSort input:focus {
+  outline: 1px solid salmon;
+}
