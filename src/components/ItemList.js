@@ -2,15 +2,19 @@
 import "./ItemList.css";
 import React from "react";
 
-const ItemList = ({ book, onDelete }) => {
+const ItemList = ({ book, selectedType, onDelete }) => {
   const onClickDelete = (id) => {
     onDelete(id);
   };
 
+  const filteredItems = selectedType
+    ? book.filter((content) => content.purchaseType === selectedType)
+    : book;
+
   return (
     <>
       <div className="ItemList">
-        {book.map((content) => (
+        {filteredItems.map((content) => (
           <div className="AccountItem" key={content.id}>
             <div>
               <div className="purchase_type">유형: {content.purchaseType}</div>
